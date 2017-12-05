@@ -1,30 +1,17 @@
 #include "search_algos.h"
 /**
- * divide_conquer - helper func used for recurssion
- * @array: list of integers being searched
- * @start: begenning index
- * @end: ending index
- * @value: number being matched
- * Return: index of matched element or -1
+ * compare = compares 2 midbers
+ * @mid: middle number
+ * @value: midber being matched
+ * Return: -1 left, 1 right, 0 match
  */
-int divide_conquer(int *array, int start, int end, int value)
+int compare(int mid, int value)
 {
-	int i, mid = (start + end) / 2;
-
-	if (array != NULL && start < mid && mid < end)
-       	{
-		printf("Searching in array: %i", array[start]);
-		for (i = start + 1; i <= end; i++)
-			printf(", %i", array[i]);
-		printf("\n");
-		if (array[mid] > value)
-			return (divide_conquer(array, start, mid, value));
-		else if (array[mid] < value)
-			return (divide_conquer(array, mid, end, value));
-		else
-			return (mid);
-	}
-	return (-1);
+	if (mid > value) // search left
+		return -1;
+	if (mid < value) // search right
+		return 1;
+	return 0; // match found
 }
 
 /**
@@ -36,5 +23,31 @@ int divide_conquer(int *array, int start, int end, int value)
  */
 int binary_search(int *array, size_t size, int value)
 {
-	return (divide_conquer(array, 0, size - 1, value));
+	int i, mid;
+	int left = 0;
+	int right = size -1;
+
+	while ( array != NULL && left <= right)
+	{
+		mid = (left + right) / 2; // get mid
+
+		// Printing sub array thats being searched
+		printf("Searching in array: %i", array[left]);
+		for (i = left + 1; i <= right; i++)
+			printf(", %i", array[i]);
+		printf("\n");
+
+		switch ( compare(array[mid], value) )
+		{
+			case -1: // search left
+				right = mid - 1;
+				break;
+			case 1: // search right
+				left = mid + 1;
+				break;
+			case 0: // match found
+				return mid;
+		}
+	}
+	return -1;  // array NULL or no match found
 }
