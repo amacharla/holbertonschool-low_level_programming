@@ -1,7 +1,7 @@
 0:
 	gcc -Wall -Wextra -Werror -pedantic 0-main.c 0-linear.c -g -o 0-linear
 0r: 0
-	./0-liner
+	./0-linear
 1:
 	gcc -Wall -Wextra -Werror -pedantic 1-main.c 1-binary.c -o 1-binary
 1r: 1
