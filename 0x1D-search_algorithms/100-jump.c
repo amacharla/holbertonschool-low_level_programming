@@ -1,6 +1,12 @@
 #include "search_algos.h"
 #include <math.h>
-
+/**
+ * jump_search - incremmently goes through array then linearly
+ * @array: list of integers being searched
+ * @size: size of array
+ * @value: number being matched
+ * Return: index of matched element or -1
+ */
 int jump_search(int *array, size_t size, int value)
 {
 	size_t i;

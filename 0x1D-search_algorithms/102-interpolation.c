@@ -15,27 +15,35 @@ int compare(int mid, int value)
 }
 
 /**
- * binary_search - itteratively searches via divide and conquer method.
+ * interpolation_search - itterately search for number
  * @array: list of integers being searched
  * @size: size of array
  * @value: number being matched
  * Return: index of matched element or -1
  */
-int binary_search(int *array, size_t size, int value)
+int interpolation_search(int *array, size_t size, int value)
 {
-	int i, mid;
+	int mid;
 	int left = 0;
 	int right = size - 1;
 
 	while (array != NULL && left <= right)
 	{
-		mid = (left + right) / 2; /* get mid */
+		mid = /* Find relative position */
+		(
+			left + /* use to determain relative index */
+			((right - left) / (array[right] - array[left]))
+			* (value - array[left]) /* lean left or right */
+		);
 
-		/* Printing sub array thats being searched */
-		printf("Searching in array: %i", array[left]);
-		for (i = left + 1; i <= right; i++)
-			printf(", %i", array[i]);
-		printf("\n");
+		/* if index is out of range break */
+		if (array[left] > value || value > array[right])
+		{
+			printf("Value checked array[%i] is out of range\n", mid);
+			break;
+		}
+
+		printf("Value checked array[%i] = [%i]\n", mid, array[mid]);
 
 		switch (compare(array[mid], value))
 		{
