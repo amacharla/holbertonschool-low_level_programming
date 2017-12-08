@@ -11,12 +11,12 @@ int linear_search(int *array, size_t size, int value)
 	size_t i;
 	int  num;
 
-	if (array)
+	if (array != NULL)
 	{
 		for (i = 0; i < size; i++)
 		{
 			num = array[i];
-			printf("Value check array[%lu] = [%i]\n", i, num);
+			printf("Value checked array[%lu] = [%i]\n", i, num);
 
 			if (num == value)
 				return (i);

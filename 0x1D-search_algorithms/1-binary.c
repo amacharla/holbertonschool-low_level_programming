@@ -7,9 +7,9 @@
  */
 int compare(int mid, int value)
 {
-	if (mid > value) /* search left */
+	if (value < mid) /* search left */
 		return (-1);
-	if (mid < value) /* search right */
+	if (value > mid) /* search right */
 		return (1);
 	return (0); /* match found */
 }
