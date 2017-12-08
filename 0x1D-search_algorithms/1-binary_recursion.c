@@ -12,7 +12,7 @@ int divide_conquer(int *array, int start, int end, int value)
 	int i, mid = (start + end) / 2;
 
 	if (array != NULL && start < mid && mid < end)
-       	{
+	{
 		printf("Searching in array: %i", array[start]);
 		for (i = start + 1; i <= end; i++)
 			printf(", %i", array[i]);
